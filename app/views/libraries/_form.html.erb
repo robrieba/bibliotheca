@@ -1,0 +1,31 @@
+<%= form_for library do |f| %>
+
+  <% if library.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(library.errors.count, "error") %>.</h4>
+      <ul>
+        <% library.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_group_tag(library.errors[:branch]) do %>
+    <%= f.label :branch %>
+    <%= f.text_field :branch, class: 'form-control', placeholder: "Enter branch name" %>
+  <% end %>
+  <%= form_group_tag(library.errors[:description]) do %>
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control', placeholder: "Enter description for the branch" %>
+  <% end %>
+  <%= form_group_tag(library.errors[:image_url]) do %>
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url, class: 'form-control', placeholder: "URL for the branch image" %>
+  <% end %>
+
+  <div class="actions">
+    <p><%= f.submit "Save", class: 'btn btn-success' %></p>
+  </div>
+
+<% end %>

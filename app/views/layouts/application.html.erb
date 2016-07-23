@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bibliotheca</title>
+  <title>Walther Memorial Library System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Walther Memorial Library System', root_path, class: 'navbar-brand' %></li>
+      </ul>
+    </div>
+  </nav>
 
-<%= yield %>
+  <div class="container">
+    <div class="flash" id="flash">
+      <% if !flash.empty? %>
+        <script language='javascript'>
+          $('#flash').delay(3000).fadeOut(1000);
+        </script>
+
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+          <% elsif flash[:error] %>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:error] %>
+          </div>
+          <% elsif flash[:alert] %>
+          <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <%= yield %>
+
+  </div>
 
 </body>
 </html>
