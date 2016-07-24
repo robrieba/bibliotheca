@@ -1,0 +1,18 @@
+<div class="media">
+  <div class="media-left media-top">
+    <%= image_tag book.image_url, class: "media-object" %>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= "#{book.title}" %></h4>
+    <h5 class="media-heading">by <%= "#{book.author}" %></h5>
+
+    <p>
+      <%= link_to 'Request a copy', library_path, class: 'btn-sm btn-success' %>
+    </p>
+    <p>
+      <%= link_to 'Edit', edit_library_book_path(library, book), class: 'btn-xs btn-primary' %>
+      <%= link_to 'Delete', [library, book], class: 'btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+
+  </div>
+</div>

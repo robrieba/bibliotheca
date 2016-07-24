@@ -1,6 +1,7 @@
 class LibrariesController < ApplicationController
 
   before_action :set_library, only: [:show, :edit, :update, :destroy]
+  before_action :set_books, only: [:show]
 
   def index
     @libraries = Library.all.page(params[:page]).per(6)
@@ -20,7 +21,7 @@ class LibrariesController < ApplicationController
     @library = Library.new(library_params)
 
     if @library.save
-      flash[:notice] = "The #{@library.branch}\" branch was saved successfully."
+      flash[:notice] = "The #{@library.branch} branch was saved successfully."
       redirect_to @library
     else
       flash.now[:alert] = "Error! The branch will not save."
@@ -30,7 +31,7 @@ class LibrariesController < ApplicationController
 
   def update
     if @library.update(library_params)
-      flash[:notice] = "The #{@library.branch}\" branch was updated successfully."
+      flash[:notice] = "The #{@library.branch} branch was updated successfully."
       redirect_to @library
     else
       flash.now[:alert] = "Error! The branch will not save."
@@ -40,10 +41,10 @@ class LibrariesController < ApplicationController
 
   def destroy
     if @library.destroy
-      flash[:notice] = "\"The #{@library.branch}\" branch was deleted successfully."
+      flash[:notice] = "The #{@library.branch} branch was deleted successfully."
       redirect_to @post.topic
     else
-      flash.now[:alert] = "Error! Cannot save the branch."
+      flash.now[:alert] = "Error! Cannot delete the branch."
       render :show
     end
   end
@@ -55,11 +56,11 @@ class LibrariesController < ApplicationController
   end
 
   def set_books
-    # if params[:search]
-    #   @books = Book.title_or_isbn(params[:search]).page(params[:page]).per(5)
-    # else
-    #   @books = Library.find(params[:id]).books.page(params[:page]).per(5)
-    # end
+    if params[:search]
+      @books = Book.title_or_isbn(params[:search]).page(params[:page]).per(5)
+    else
+      @books = Library.find(params[:id]).books.page(params[:page]).per(5)
+    end
   end
 
   def library_params

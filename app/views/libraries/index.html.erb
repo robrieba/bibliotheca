@@ -3,7 +3,6 @@
 <%= paginate @libraries %>
 
 <% @libraries.each do |library| %>
-
   <h2>
     <%= link_to library.branch, library %>
     <%= link_to 'Edit', edit_library_path(library), class: 'btn-xs btn-primary' %>

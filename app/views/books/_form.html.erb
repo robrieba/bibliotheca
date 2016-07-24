@@ -1,0 +1,37 @@
+<%= form_for [library, book] do |f| %>
+
+  <% if book.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(book.errors.count, "error") %>.</h4>
+      <ul>
+        <% book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_group_tag(book.errors[:title]) do %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Title" %>
+  <% end %>
+  <%= form_group_tag(book.errors[:author]) do %>
+    <%= f.label :author %>
+    <%= f.text_field :author, class: 'form-control', placeholder: "Author" %>
+  <% end %>
+  <%= form_group_tag(book.errors[:isbn]) do %>
+    <%= f.label :isbn %>
+    <%= f.text_field :isbn, class: 'form-control', placeholder: "ISBN-10 or ISBN-13" %>
+  <% end %>
+  <%= form_group_tag(book.errors[:publisher]) do %>
+    <%= f.label :publisher %>
+    <%= f.text_field :publisher, class: 'form-control', placeholder: "Publisher" %>
+  <% end %>
+  <%= form_group_tag(book.errors[:image_url]) do %>
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url, class: 'form-control', placeholder: "URL for the branch image" %>
+  <% end %>
+
+  <p><%= f.submit "Save", class: 'btn btn-success' %></p>
+
+<% end %>

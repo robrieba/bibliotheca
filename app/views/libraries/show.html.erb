@@ -1,5 +1,19 @@
 <h1><%= "#{@library.branch}" %></h1>
 
 <p>
+  <%= image_tag @library.image_url %>
+</p>
+
+<p>
+  <%= link_to 'Add Book', new_library_book_path(@library, @book), class: 'btn btn-primary' %>
+</p>
+
+<%= paginate @books %>
+
+<%= render @books, library: @library %>
+
+<%= paginate @books %>
+
+<p>
   <%= link_to 'Back', libraries_path, class: 'btn btn-primary' %>
 </p>

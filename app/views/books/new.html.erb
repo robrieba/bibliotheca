@@ -1,0 +1,7 @@
+<h1>Adding New Book</h1>
+
+<%= render partial: 'form', locals: { library: @library, book: @book } %>
+
+<p>
+  <%= link_to 'Back', library_path(@library), class: 'btn btn-primary' %>
+</p>
