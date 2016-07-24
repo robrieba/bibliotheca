@@ -12,12 +12,12 @@ group :development do
 end
 
 group :development, :test do
-  gem 'faker'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'shoulda'
 end
 
+gem 'faker'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
