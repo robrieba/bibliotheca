@@ -7,8 +7,10 @@
     <h5 class="media-heading">by <%= "#{book.author}" %></h5>
 
     <p>
-      <%= link_to 'Request a copy', library_path, class: 'btn-sm btn-success' %>
+      <%= link_to "Request", library_book_request_path(library, book), class: 'btn-sm btn-success', method: :post %>
+      <%= pluralize(number_of_requests(book), 'request') %>
     </p>
+
     <p>
       <%= link_to 'Edit', edit_library_book_path(library, book), class: 'btn-xs btn-primary' %>
       <%= link_to 'Delete', [library, book], class: 'btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>

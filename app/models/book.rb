@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :library
+  has_many :requests, dependent: :destroy
 
   validates :title, presence: true
   validates :isbn, length: { minimum: 10 }, presence: true
