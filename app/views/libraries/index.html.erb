@@ -1,12 +1,12 @@
-<h1>Branches <%= link_to 'Add Branch', new_library_path, class: 'btn-xs btn-primary' %></h1>
+<h1>Branches <%= link_to 'Add Branch', new_library_path, class: 'btn-xs btn-primary' if admin_mode? %></h1>
 
 <%= paginate @libraries %>
 
 <% @libraries.each do |library| %>
   <h2>
     <%= link_to library.branch, library %>
-    <%= link_to 'Edit', edit_library_path(library), class: 'btn-xs btn-primary' %>
-    <%= link_to 'Delete', library, class: 'btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', edit_library_path(library), class: 'btn-xs btn-primary' if admin_mode?  %>
+    <%= link_to 'Delete', library, class: 'btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } if admin_mode?  %>
   </h2>
 <% end %>
 

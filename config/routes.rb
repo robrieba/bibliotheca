@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/admin' => 'application#admin_toggle'
+
   root "libraries#index"
 
 end

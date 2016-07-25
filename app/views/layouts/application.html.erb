@@ -13,8 +13,11 @@
       <ul class="nav navbar-nav navbar-left">
         <li><%= link_to 'Walther Memorial Library System', root_path, class: 'navbar-brand' %></li>
       </ul>
-    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "#{admin_mode_tag} Toggle Admin Mode", admin_path, method: :post, class: 'navbar-item' %></li>
+      </ul>
   </nav>
+    </div>
 
   <div class="container">
     <div class="flash" id="flash">

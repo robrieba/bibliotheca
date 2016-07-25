@@ -18,8 +18,8 @@
     </p>
 
     <p>
-      <%= link_to 'Edit', edit_library_book_path(library, book), class: 'btn-xs btn-primary' %>
-      <%= link_to 'Delete', [library, book], class: 'btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_library_book_path(library, book), class: 'btn-xs btn-primary' if admin_mode? %>
+      <%= link_to 'Delete', [library, book], class: 'btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } if admin_mode? %>
     </p>
 
   </div>
