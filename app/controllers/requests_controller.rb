@@ -2,8 +2,7 @@ class RequestsController < ApplicationController
   before_action :set_library_book, only: [:make_request]
 
   def make_request
-    book = @library.books.find(@book.id)
-    book.requests.create!(library: @library, book: @book)
+    @book.requests.create!(library: @library, book: @book)
 
     redirect_to :back
   end

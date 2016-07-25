@@ -3,12 +3,18 @@
     <%= image_tag book.image_url, class: "media-object" %>
   </div>
   <div class="media-body">
-    <h4 class="media-heading"><%= "#{book.title}" %></h4>
+    <h4 class="media-heading"><%= "#{book.title}" %> <small>ISBN: <%= "#{book.isbn}" %></small></h4>
     <h5 class="media-heading">by <%= "#{book.author}" %></h5>
+    <p><small>Publisher: <%= "#{book.publisher}" %></small></p>
+
+    <% if available_through_interlibrary_loan?(library, book) %>
+      <p><mark>Available via interlibrary loan<%= interlibrary_loan_tag(library, book) %>.</mark></p>
+    <% end %>
 
     <p>
       <%= link_to "Request", library_book_request_path(library, book), class: 'btn-sm btn-success', method: :post %>
-      <%= pluralize(number_of_requests(book), 'request') %>
+      <%= interlibrary_loan_tag(library, book) %>
+      <small>(<%= pluralize(number_of_requests(library, book), 'request') %>)</small>
     </p>
 
     <p>

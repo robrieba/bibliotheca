@@ -8,4 +8,6 @@ class Book < ActiveRecord::Base
   validates :publisher, presence: true
   validates :library_id, presence: true
 
+  scope :title_or_isbn, ->(title_or_isbn) { where("title LIKE '%#{title_or_isbn}%' OR isbn = '#{title_or_isbn}'") }
+
 end
