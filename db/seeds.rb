@@ -11,7 +11,6 @@ require 'faker'
       author: Faker::Book.author,
       publisher: Faker::Book.publisher,
       copies: (0..5).to_a.sample,
-      requests: (10..50).to_a.sample,
       image_url: Faker::Placeholdit.image("65x100"))
   end
 
