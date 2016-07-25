@@ -21,6 +21,11 @@
   <% end %>
 </div>
 
+<div>
+  <h3>Most Requested Book</h3>
+  <p><%= most_requested_book(@library) %></p>
+</div>
+
 <%= paginate @books %>
 
 <%= render @books, library: @library %>

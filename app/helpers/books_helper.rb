@@ -1,7 +1,7 @@
 module BooksHelper
 
   def number_of_requests(library, book)
-    book.requests.where(library_id: library.id).count
+    book.requests.where(library_id: library.id).size
   end
 
   def library_name(book)
