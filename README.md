@@ -29,7 +29,7 @@ The frontend is clean, readable, functional and unattractive.
 #### Backend
 
 Since the application is a toy, the database model is limited.  Models only exist for Libraries, Books, and Requests.  
-- A stub was placed within the book table for tracking copies.  Since requests are merely queued, not processed, nothing happens with the copy field.  
+- A stub was placed within the book table for tracking copies.  Since requests are merely queued, not processed, nothing happens with the copy field. A copy or instance model would be appropriate for a real system.  
 - A real application would separate a book's profile from its instance and properly process requests based upon its availability.  
 - In a busy library system, Redis might serve well for tracking the most requested books.  At the very least, this query could be more efficient (as a stored procedure, a cached value, or other).
 - "Administration mode" is nothing but a proof-of-concept implemented by toggling a session variable.
