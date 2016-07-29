@@ -4,7 +4,9 @@ class RequestsController < ApplicationController
   def make_request
     @book.requests.create!(library: @library, book: @book)
 
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
   end
 
   private

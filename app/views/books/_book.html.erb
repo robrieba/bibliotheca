@@ -12,9 +12,9 @@
     <% end %>
 
     <p>
-      <%= link_to "Request", library_book_request_path(library, book), class: 'btn-sm btn-success', method: :post %>
+      <%= link_to "Request", library_book_request_path(library, book), class: 'btn-sm btn-success', method: :post, remote: true %>
       <%= interlibrary_loan_tag(library, book) %>
-      <small>(<%= pluralize(number_of_requests(library, book), 'request') %>)</small>
+      <small>(<span id="request-<%=book.id%>"><%= pluralize(number_of_requests(library, book), 'request') %></span>)</small>
     </p>
 
     <p>
