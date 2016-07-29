@@ -7,6 +7,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
+    end
   end
 
   private
@@ -19,6 +20,5 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:library, :book)
   end
-
 
 end
